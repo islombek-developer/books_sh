@@ -1,0 +1,36 @@
+{% extends 'salar/dashboard.html' %}
+
+{% block content %}
+<div class="container mt-5">
+<a class="btn btn-outline-info" href="{% url 'salar:create_product' %}">Create</a>
+
+<table class="table table-primary">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quontity</th>
+        <th scope="col">Adabiyotlar</th>
+        <th scope="col">Button</th>
+      </tr>
+    </thead>
+    {% for i in products %}
+    <tbody>
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td><a href="#">{{i.name}}</a></td>
+        <td>{{i.price}}</td>
+        <td>{{i.quantity}}</td>
+        <td>{{i.category}}</td>
+        <td>
+          <a class="btn btn-outline-danger" href="{% url 'salar:delete' i.id %}">Delete</a>
+          <a class="btn btn-outline-info" href="{% url 'salar:update' i.id %}">Update</a>
+        </td>
+      </tr>
+      
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}
