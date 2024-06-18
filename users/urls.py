@@ -6,8 +6,8 @@ app_name = 'client'
 urlpatterns = [
 
    
-    path('',LoginView.as_view(),name='login'),
-    path('home/',ClientProduct.as_view(),name='products'),
+    path('login/',LoginView.as_view(),name='login'),
+    path('',ClientProduct.as_view(),name='products'),
     path('batafsil/<int:id>/',DetailView.as_view(),name='batafsil'),
     path('cart/',DetailView.as_view(),name='cart'),
     path('carts/',CartDetailView.as_view(),name='carts'),

@@ -22,7 +22,7 @@ class LoginView(View):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('/home')
+                return redirect('/')
 
         form = LoginForm()
         return render(request, 'client/login.html', {'form': form})
@@ -98,7 +98,7 @@ class DetailView(View):
             cart.product=product
             cart.quontity=quontity
             cart.save()
-        return redirect('/home')
+        return redirect('/')
     
 class Categoryes(View):
     def get(self,request,id):
@@ -114,7 +114,7 @@ class CartDetailView(View):
 def delete(request,id):
     cart = get_object_or_404(Cart,id=id)
     cart.delete()
-    return redirect('/home')
+    return redirect('/')
 
 
 class ProfileView(LoginRequiredMixin,View):
@@ -198,6 +198,6 @@ class RegisterView2( View):
             user.set_password(password)
             user.save()
 
-            return redirect('/home')
+            return redirect('/')
 
         return render(request, 'client/register2.html', {'form': form})

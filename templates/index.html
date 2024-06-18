@@ -84,7 +84,7 @@
                         </a>
                     </div>
                     <div class="main__logo">
-                        <h1 class="main__logo--title"><a class="main__logo--link" href="index.html"><img class="main__logo--img" src="{% static 'assets/img/sa.png' %}" alt="logo-img"></a></h1>
+                        <h1 class="main__logo--title"><a class="main__logo--link" href="#"><img class="main__logo--img" src="{% static 'assets/img/al.png' %}" alt="logo-img"></a></h1>
                     </div>
                     <div class="header__search--widget d-none d-lg-block">
                         <form class="d-flex header__search--form" method="get">
@@ -107,6 +107,8 @@
                                 </a>
                             </li>
                             <li class="header__account--items">
+                            {% if user.is_authenticated %}
+                                      
                                 {% if user.user_role == 'admin' %}
                                 <a class="header__account--btn" href="{% url 'client:dashboard' %}">
                                     <svg xmlns="http://www.w3.org/2000/svg"  width="26.51" height="23.443" viewBox="0 0 512 512"><path d="M344 144c-3.92 52.87-44 96-88 96s-84.15-43.12-88-96c-4-55 35-96 88-96s92 42 88 96z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32"/><path d="M256 304c-87 0-175.3 48-191.64 138.6C62.39 453.52 68.57 464 80 464h352c11.44 0 17.62-10.48 15.65-21.4C431.3 352 343 304 256 304z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"/></svg> 
@@ -123,6 +125,8 @@
                                     <span class="visually-hidden">My Account</span>
                                 </a>
                                 {% endif %}
+                            {% endif %}
+                            
                                
                             </li>
                             <li class="header__account--items d-md-none">
@@ -158,24 +162,39 @@
                                         <a class="header__menu--link" href="{% url 'client:products' %}">Home </a>
                                      
                                     </li> 
-                                    {% for cat in cotegory %}
-                                    <li class="header__menu--items mega__menu--items">
-                                        <a class="header__menu--link" href="{% url 'client:categor' cat.id %}">{{cat.name}} </a>
+                                    <li class="header__menu--items">
+                                        <a class="header__menu--link" href="#">Home </a>
+                                        <ul class="header__sub--menu">
+                                            {% for cat in cotegory %}
+                                                <li class="header__sub--menu__items"><a href="{% url 'client:categor' cat.id %}" class="header__sub--menu__link">{{cat.name}}</a></li>
+                                            {% endfor %}
+                                            
+                                        </ul>
                                     </li>
-                                    {% endfor %}
+                                   
 
-                                    <li class="header__menu--items mega__menu--items">
-                                        <a class="header__menu--link" href="{% url 'client:logout' %}">logo ut </a>
-                                    </li>
-                                    <li class="header__menu--items mega__menu--items">
-                                        <a class="header__menu--link" href="{% url 'client:login' %}">Log in </a>
-                                    </li>
                                     
-                                    {% if user.user_role == 'admin' %}
+                                    <li class="header__menu--items mega__menu--items">
+                                        <a class="header__menu--link" href="{% url 'client:logout' %}">logo ut</a>
+                                    </li>
+                                    {% if user.is_authenticated %}
+                                      
+                                    {% else %}
+                                        <li class="header__menu--items mega__menu--items">
+                                            <a class="header__menu--link" href="{% url 'client:login' %}">Log in</a>
+                                        </li>
+                                        <li class="header__menu--items mega__menu--items">
+                                            <a class="header__menu--link" href="{% url 'client:register2' %}">Register</a>
+                                        </li>
+                                    {% endif %}
+                                 
+                                    
+                                    <!-- {% if user.user_role == 'admin' %}
                                         <li class="header__menu--items mega__menu--items">
                                             <a class="header__menu--link" href="{% url 'client:register' %}">register </a>
                                         </li>
-                                    {% endif %}
+                                    {% endif %} -->
+                                   
 
                                     
                                     
@@ -202,6 +221,7 @@
             <div class="predictive__search--box__inner">
                 <h2 class="predictive__search--title">Search Products</h2>
                 <form class="predictive__search--form" action="#">
+                    
                     <label>
                         <input class="predictive__search--input" placeholder="Search Here" type="text">
                     </label>
