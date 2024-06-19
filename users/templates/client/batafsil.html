@@ -105,16 +105,18 @@
                                     <div class="product__variant--list mb-20">
                                         
                                     </div>
-                                    {% if user.is_authenticated %}
-                                    <div class="product__variant--list quantity d-flex align-items-center mb-20">
-                                        <div class="quantity__box">
-                                            <label>
-                                                <input type="number" class="quantity__number quickview__value--number" name="cart" type="number" value="1" />
-                                            </label>
+                                    {% if user.user_role == 'client' %}
+                                        <div class="product__variant--list quantity d-flex align-items-center mb-20">
+                                            <div class="quantity__box">
+                                                <label>
+                                                    <input type="number" class="quantity__number quickview__value--number" name="cart" type="number" value="1" />
+                                                </label>
+                                            </div>
+                                            <button class="quickview__cart--btn primary__btn" type="submit">Add To Cart</button>  
                                         </div>
-                                        <button class="quickview__cart--btn primary__btn" type="submit">Add To Cart</button>  
-                                    </div>
+                                  
                                     {% endif %}
+
                                     <!-- <div class="product__variant--list mb-15">
                                        
                                         <button class="variant__buy--now__btn primary__btn" type="submit">Buy it now</button>

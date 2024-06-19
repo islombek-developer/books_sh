@@ -81,9 +81,10 @@ class ClientCategory(View):
 
 class DetailView(View):
     def get(self,request,id):
+        cotegory = Category.objects.all()
         product = get_object_or_404(Product,id=id)
         cart = Cart.objects.count()
-        return render(request,'client/batafsil.html',{'product':product,'cart':cart})
+        return render(request,'client/batafsil.html',{'product':product,'cart':cart,'cotegory':cotegory})
     
     def post(self,request,id):
         product = get_object_or_404(Product,id=id)
@@ -108,8 +109,9 @@ class Categoryes(View):
     
 class CartDetailView(View):
     def get(self,request):
+        cotegory = Category.objects.all()
         products = Cart.objects.all()
-        return render(request,'client/cart.html',{"products":products}) 
+        return render(request,'client/cart.html',{"products":products,'cotegory':cotegory}) 
 
 def delete(request,id):
     cart = get_object_or_404(Cart,id=id)
@@ -119,8 +121,9 @@ def delete(request,id):
 
 class ProfileView(LoginRequiredMixin,View):
     def get(self,request):
+        cotegory = Category.objects.all()
         user = request.user
-        return render(request,'client/profil.html',context={"user":user})
+        return render(request,'client/profil.html',context={"user":user,'cotegory':cotegory})
     
 class EditProfileView(LoginRequiredMixin, View):
     def get(self, request, id):
@@ -133,9 +136,10 @@ class EditProfileView(LoginRequiredMixin, View):
         form = ProfileForm(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
-            return redirect('/profil')
+
+            return redirect('/dashboard')
         return render(request, 'client/edit.html', {'form': form})
-    
+
 
 class ResetPasswordView(LoginRequiredMixin,View):
     def get(self, request):
@@ -154,13 +158,8 @@ class ResetPasswordView(LoginRequiredMixin,View):
         return render(request, 'client/reset_password.html', {'form':form})
     
 def sallr(request):
-    sallar = Salar.objects.all()
+    sallar = User.objects.all()
     return render(request,'client/sallar.html',{'sallar':sallar})
-
-def client(request):
-    client = Client.objects.all()
-    return render(request,'client/client.html',{'client':client})
-
 
 class Delete(AdminRequiredMixin,View):
     def get(self,request,id):

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ClientProduct,DetailView,Categoryes,CartDetailView,delete,LoginView,ClientCategory,ProfileView,EditProfileView,LogautView,RegisterView,ResetPasswordView,sallr,ProfileViewAdmin,client,Delete,Deletes,RegisterView2
+from .views import ClientProduct,DetailView,Categoryes,CartDetailView,delete,LoginView,ClientCategory,ProfileView,EditProfileView,LogautView,RegisterView,ResetPasswordView,sallr,ProfileViewAdmin,Delete,Deletes,RegisterView2
 
 app_name = 'client'
 
@@ -23,7 +23,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('register2/', RegisterView2.as_view(), name='register2'),
     path('sallar/',sallr, name='sallar'),
-    path('client/',client, name='client'),
     path('resed-password', ResetPasswordView.as_view(), name='resed_password'),
 
 

@@ -7,6 +7,7 @@ from django.urls import reverse
 from users.models import Product,Client,User
 from users.forms import ResetPasswordForm,ProfileForm
 
+
 class ProductsView(View):
     def get(self, request):
         products = Product.objects.all()

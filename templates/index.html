@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div> -->
-        <div class="main__header main__header--style2">
+        <div style="background-color: rgb(217, 255, 0);" class="main__header main__header--style2">
             <div class="container">
                 <div class="main__header--inner d-flex justify-content-between align-items-center">
                     <div class="offcanvas__header--menu__open ">
@@ -171,10 +171,11 @@
                                             
                                         </ul>
                                     </li>
-                                    
+                                    {% if user.is_authenticated %}
                                     <li class="header__menu--items mega__menu--items">
                                         <a class="header__menu--link" href="{% url 'client:logout' %}">logo ut</a>
                                     </li>
+                                    {% endif %}
                                     {% if user.is_authenticated %}
                                       
                                     {% else %}
@@ -192,12 +193,6 @@
                                             <a class="header__menu--link" href="{% url 'client:register' %}">register </a>
                                         </li>
                                     {% endif %} -->
-                                   
-
-                                    
-                                    
-                                    
-                                   
                                     
                                 </ul>
                             </nav>
@@ -297,6 +292,6 @@
 
   <!-- Customscript js -->
   <script src="{% static 'assets/js/script.js' %}" defer="defer"></script>
-  
+  <script src="{% static 'css/sa.js' %}" defer="defer"></script>
 </body>
 </html>

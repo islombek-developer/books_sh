@@ -6,10 +6,11 @@
     <thead>
       <tr>
         <th scope="col">id</th>
-        <th scope="col">First name</th>
-        <th scope="col">last name</th>
+        <th scope="col">Full name</th>
+        <th scope="col">User name</th>
         <th scope="col">phone number</th>
         <th scope="col"> address</th>
+        <th scope="col"> Role</th>
         <th scope="col">Button</th>
       </tr>
     </thead>
@@ -17,14 +18,14 @@
     <tbody>
       <tr>
         <th scope="row">{{i.id}}</th>
-        <td><a href="#">{{i.user.first_name}}</a></td>
-        <td>{{i.user.last_name}}</td>
+        <td><a href="#">{{i.user.first_name}} {{i.user.last_name}}</a></td>
+        <td>{{i.user.username}}</td>
         <td>{{i.user.phone_number}}</td>
         <td>{{i.user.address}}</td>
+        <td>{{i.user.user_role}}</td>
         <td>
           
           <a class="btn btn-outline-danger" href="{% url 'client:deletec' i.id %}">Delete</a>
-          <a class="btn btn-outline-info" href="{% url 'client:edit' i.id %}">Edit</a>
     
         </td>
       </tr>

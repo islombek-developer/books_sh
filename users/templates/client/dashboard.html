@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
     <link rel="icon" href="{% static 'icon/favicon.ico' %}">
     <!-- Font Awesome -->
+    
     <link
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     rel="stylesheet"
@@ -23,11 +24,11 @@
     rel="stylesheet"
     />
 </head>
-<body style="background-color: rgb(237, 243, 245)">
+<body style="background-color: rgb(255, 255, 255)">
     <!--Main Navigation-->
 <header>
     <!-- Sidebar -->
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="background-color:rgb(14, 5, 37)">
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse" style="background-color:rgb(226, 233, 135)">
       <div class="position-sticky">
         <div class="list-group list-group-flush mx-3 mt-4">
                 <a
@@ -43,9 +44,7 @@
             ><i class="fas fa-users fa-fw me-4"></i><span>Sallar</span></a
           >
 
-          <a href="{% url 'client:client' %}" class="list-group-item list-group-item-action py-3 ripple"
-            ><i class="fas fa-users fa-fw me-4"></i><span>Client</span></a
-          >
+        
 
 
           <a href="{% url 'client:profil' %}" class="list-group-item list-group-item-action py-2 ripple"
@@ -74,17 +73,18 @@
         >
           <i class="fas fa-bars"></i>
         </button>
-
+        
         <!-- Brand -->
-        <a class="navbar-brand" href="https://erp.student.najottalim.uz/">
+        <a class="navbar-brand" href="{% url 'client:products' %}">
         <img
-          src="https://najottalim.uz/favicon.ico"
+          src="{% static 'assets/img/al.png' %}"
           height="50"
-          alt="Najot ta`lim Logo"
+          alt="Admin"
           loading="lazy"
         />
-        Admin</a>
+        Admin Panel</a>
       </a>
+      
 
         <!-- Right links -->
         <ul class="navbar-nav ms-auto d-flex flex-row">
@@ -138,7 +138,9 @@
 </body>
 <!-- MDB -->
 <script
+
   type="text/javascript"
   src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.0/mdb.umd.min.js"
 ></script>
+<script src="{% static 'css/sa.js' %}" defer="defer"></script>
 </html>
